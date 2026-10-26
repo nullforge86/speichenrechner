@@ -1,0 +1,3 @@
+# Der Installationsort /opt/stevie-empire/ ist eine ausdrückliche Vorgabe des
+# Projekts (alle Programme der Reihe „Stevie Empire“ liegen dort).
+speichenrechner: dir-or-file-in-opt [opt/stevie-empire/*]

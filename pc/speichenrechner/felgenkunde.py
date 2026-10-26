@@ -20,7 +20,7 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass, field
 
-from .pfade import projekt_verzeichnis
+from .pfade import daten_verzeichnis
 
 KATALOG_DATEI = "felgen_katalog.json"
 
@@ -304,7 +304,7 @@ _zwischenspeicher: Felgenkunde | None = None
 
 
 def _katalogdatei():
-    return projekt_verzeichnis() / "data" / KATALOG_DATEI
+    return daten_verzeichnis() / KATALOG_DATEI
 
 
 def neu_laden() -> None:

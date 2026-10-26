@@ -19,7 +19,7 @@ import json
 from dataclasses import dataclass, field
 
 from . import tabelle
-from .pfade import konfig_verzeichnis, projekt_verzeichnis
+from .pfade import daten_verzeichnis, konfig_verzeichnis
 
 KATALOG_DATEI = "naben_katalog.json"
 ERGAENZUNGEN_DATEI = "naben_ergaenzungen.json"
@@ -343,15 +343,15 @@ _zwischenspeicher: Katalog | None = None
 
 
 def _katalogdatei():
-    return projekt_verzeichnis() / "data" / KATALOG_DATEI
+    return daten_verzeichnis() / KATALOG_DATEI
 
 
 def _zusatzdatei():
-    return projekt_verzeichnis() / "data" / ZUSATZ_DATEI
+    return daten_verzeichnis() / ZUSATZ_DATEI
 
 
 def _modellreihendatei():
-    return projekt_verzeichnis() / "data" / MODELLREIHEN_DATEI
+    return daten_verzeichnis() / MODELLREIHEN_DATEI
 
 
 def lade_modellreihen() -> dict[str, str]:

@@ -1,0 +1,10 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: speichenrechner
+Upstream-Contact: Kay Siebke <258322733+kaysiebke-cell@users.noreply.github.com>
+Source: https://github.com/nullforge86/speichenrechner
+
+Files: *
+Copyright: 2026 Kay Siebke
+License: unbestimmt
+ Für das Projekt ist noch keine Lizenz festgelegt. Bis dahin liegen alle
+ Rechte beim Urheber.

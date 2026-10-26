@@ -17,7 +17,7 @@ HINWEIS_GTK = (
 def pruefen() -> int:
     """Prüft Abhängigkeiten und Ablageorte und schreibt einen Bericht."""
     from . import APP_ID, APP_NAME, VERSION
-    from .pfade import icon_pfad, konfig_verzeichnis
+    from .pfade import daten_verzeichnis, icon_pfad, konfig_verzeichnis
 
     print(f"{APP_NAME} {VERSION}")
     print(f"Python           {sys.version.split()[0]}")
@@ -42,6 +42,18 @@ def pruefen() -> int:
     probe = berechne(Nabe(), Felge(), Einspeichung())
     print(f"Testrechnung     {probe.links.laenge_gerundet:.1f} mm / "
           f"{probe.rechts.laenge_gerundet:.1f} mm – in Ordnung")
+
+    # Fehlt ein Katalog, bleibt die Auswahl im Fenster still leer – hier
+    # soll man sehen, wo gesucht wurde.
+    from .felgenkunde import _katalogdatei as felgendatei
+    from .katalog import _katalogdatei, _modellreihendatei, _zusatzdatei
+
+    print(f"Daten            {daten_verzeichnis()}")
+    for datei in (_katalogdatei(), _zusatzdatei(), _modellreihendatei(), felgendatei()):
+        vorhanden = datei.is_file()
+        print(f"  {datei.name:<26} {'vorhanden' if vorhanden else 'FEHLT'}")
+        if not vorhanden:
+            fehler += 1
 
     print(f"Einstellungen    {konfig_verzeichnis()}")
     print(f"Icon             {icon_pfad()} "

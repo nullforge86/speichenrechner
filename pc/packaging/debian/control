@@ -1,0 +1,21 @@
+Source: speichenrechner
+Section: science
+Priority: optional
+Maintainer: Kay Siebke <258322733+kaysiebke-cell@users.noreply.github.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.6.2
+Homepage: https://github.com/nullforge86/speichenrechner
+Rules-Requires-Root: no
+
+Package: speichenrechner
+Architecture: all
+Depends: python3 (>= 3.10), python3-gi, gir1.2-gtk-3.0, ${misc:Depends}
+Description: Speichenlängen für Fahrradlaufräder berechnen
+ GTK-3-Anwendung zur Berechnung von Fahrrad-Speichenlängen mit
+ Nabenkatalog, Felgentypen, Speichendehnung, Speichenton, Gewicht und
+ eigenen Vorlagen.
+ .
+ Das Programm liegt unter /opt/stevie-empire/speichenrechner/, der Aufruf
+ im Terminal lautet "speichenrechner". Eigene Einstellungen und Vorlagen
+ liegen in ~/.config/speichenrechner/ und bleiben bei der Deinstallation
+ erhalten.

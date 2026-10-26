@@ -4,6 +4,8 @@ name: Tests
 #   - die Python-Tests der PC-Anwendung (ohne GTK, GTK-Tests überspringen sich)
 #   - den Nabenkatalog Zelle für Zelle gegen die Herstellertabelle
 #   - dass die JavaScript-Rechnung der Handy-Fassung dieselben Zahlen liefert
+#   - dass sich das Debian-Paket der PC-Fassung bauen, installieren und wieder
+#     entfernen lässt (Ubuntu 24.04 = Basis von Linux Mint 22)
 
 on:
   push:
@@ -46,3 +48,28 @@ jobs:
 
       - name: JavaScript-Rechnung und -Katalog gegen die Python-Prüfwerte
         run: node werkzeuge/pruefwerte_js.mjs
+
+  debian-paket:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Code auschecken
+        uses: actions/checkout@v4
+
+      - name: Bauwerkzeuge installieren
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential debhelper dpkg-dev lintian desktop-file-utils
+
+      - name: Paket bauen und prüfen (Tests, Metadaten, Pfade, lintian)
+        run: pc/scripts/build-deb.sh
+
+      - name: Probeinstallation, Entfernen, Neuinstallation
+        run: pc/scripts/test-install.sh
+
+      - name: Paket als Download bereitstellen
+        uses: actions/upload-artifact@v4
+        with:
+          name: Speichenrechner-deb
+          path: pc/dist/*.deb
+          if-no-files-found: error

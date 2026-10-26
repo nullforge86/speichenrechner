@@ -1,0 +1,27 @@
+#!/usr/bin/make -f
+#
+# Baut das Paket aus dem Stand, den pc/scripts/build-deb.sh zusammenstellt:
+# data/ und pc/ wie im Repo, dazu dieser Ordner als debian/.
+
+APP_ID := de.speichenrechner.Speichenrechner
+
+%:
+	dh $@
+
+# Der Starter entsteht aus derselben Vorlage, die auch pc/install.sh benutzt –
+# so gibt es nur eine Stelle für Name, Kategorien und Stichwörter.
+override_dh_auto_build:
+	mkdir -p debian/erzeugt
+	# Im Paket fest das System-Python, das Depends zusichert – kein
+	# „env python3“, das ein venv ohne GTK erwischen könnte.
+	sed -i '1s|^#!.*python3.*$$|#!/usr/bin/python3|' pc/speichenrechner.py
+	sed -e 's|@EXEC@|/usr/bin/speichenrechner|' \
+	    -e 's|@ICON@|$(APP_ID)|' \
+	    pc/data/$(APP_ID).desktop.in > debian/erzeugt/stevie-speichenrechner.desktop
+	cp pc/data/speichenrechner.svg debian/erzeugt/$(APP_ID).svg
+
+# Die Tests laufen vorher in build-deb.sh, mit dem ganzen Repo.
+override_dh_auto_test:
+
+override_dh_auto_clean:
+	rm -rf debian/erzeugt
