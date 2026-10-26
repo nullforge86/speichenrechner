@@ -162,7 +162,7 @@ Für eine feste Installation im System gibt es ein Debian-Paket. Gebaut wird es
 auf dem eigenen Rechner (Linux Mint 22.3 / Ubuntu 24.04):
 
 ```bash
-sudo apt install debhelper dpkg-dev lintian desktop-file-utils   # einmalig
+sudo apt install build-essential debhelper dpkg-dev lintian desktop-file-utils   # einmalig
 pc/scripts/build-deb.sh
 ```
 

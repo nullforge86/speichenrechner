@@ -5,7 +5,7 @@
 #   pc/scripts/build-deb.sh              Tests, Paket bauen, Paket prüfen
 #   pc/scripts/build-deb.sh --ohne-tests Tests überspringen (nur zum Ausprobieren)
 #
-# Benötigt (einmalig):  sudo apt install debhelper dpkg-dev
+# Benötigt (einmalig):  sudo apt install build-essential debhelper dpkg-dev
 # Empfohlen:            sudo apt install lintian desktop-file-utils
 #
 # Das Ergebnis liegt in pc/dist/speichenrechner_<Fassung>_all.deb.
@@ -36,7 +36,7 @@ trap 'fehler "abgebrochen in Zeile $LINENO: $BASH_COMMAND"' ERR
 schritt "Projekt: $WURZEL"
 for werkzeug in python3 dpkg-buildpackage dpkg-deb dh; do
     command -v "$werkzeug" >/dev/null 2>&1 ||
-        fehler "$werkzeug fehlt – sudo apt install debhelper dpkg-dev python3"
+        fehler "$werkzeug fehlt – sudo apt install build-essential debhelper dpkg-dev python3"
 done
 
 # 3. Projektstruktur prüfen ---------------------------------------------------

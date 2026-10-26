@@ -59,7 +59,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
-            debhelper dpkg-dev lintian desktop-file-utils
+            build-essential debhelper dpkg-dev lintian desktop-file-utils
 
       - name: Paket bauen und prüfen (Tests, Metadaten, Pfade, lintian)
         run: pc/scripts/build-deb.sh
