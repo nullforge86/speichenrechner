@@ -32,6 +32,9 @@ CSS = b"""
 .klein {
     font-size: 90%;
 }
+.ui-abschnitt-titel {
+    font-weight: bold;
+}
 """
 
 
