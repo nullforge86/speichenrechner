@@ -6,3 +6,4 @@ __pycache__/
 # Sperrdateien von LibreOffice, wenn eine Tabelle offen ist
 .~*
 ~$*
+pc/dist/

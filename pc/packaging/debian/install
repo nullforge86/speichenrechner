@@ -1,0 +1,7 @@
+data/*.json                    opt/stevie-empire/speichenrechner/data/
+pc/speichenrechner.py          opt/stevie-empire/speichenrechner/pc/
+pc/speichenrechner/*.py        opt/stevie-empire/speichenrechner/pc/speichenrechner/
+pc/speichenrechner/ui/*.py     opt/stevie-empire/speichenrechner/pc/speichenrechner/ui/
+pc/data/speichenrechner.svg    opt/stevie-empire/speichenrechner/pc/data/
+debian/erzeugt/stevie-speichenrechner.desktop             usr/share/applications/
+debian/erzeugt/de.speichenrechner.Speichenrechner.svg     usr/share/icons/hicolor/scalable/apps/

@@ -1,4 +1,11 @@
-"""Ablageorte nach XDG-Standard – von Vorlagen und Einstellungen genutzt."""
+"""Alle Ablageorte an einer Stelle – mitgelieferte Dateien und XDG-Ordner.
+
+Die mitgelieferten Dateien werden immer vom Ort dieses Moduls aus gesucht,
+nie vom Arbeitsverzeichnis aus. Das Debian-Paket legt unter
+``/opt/stevie-empire/speichenrechner/`` denselben Aufbau an wie das Repo
+(``data/`` neben ``pc/``) – deshalb gilt dieselbe Rechnung im
+Entwicklungsordner und in der Installation.
+"""
 
 from __future__ import annotations
 
@@ -22,6 +29,11 @@ def projekt_verzeichnis() -> Path:
     Prüfwerte. Es liegt deshalb nicht in einer der beiden, sondern daneben.
     """
     return Path(__file__).resolve().parents[2]
+
+
+def daten_verzeichnis() -> Path:
+    """Die geteilten Kataloge und Prüfwerte – ``data/`` in der Projektwurzel."""
+    return projekt_verzeichnis() / "data"
 
 
 def pc_verzeichnis() -> Path:

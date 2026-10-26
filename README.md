@@ -156,6 +156,47 @@ Schreibtisch neu zeichnen – ab- und wieder anmelden genügt, oder:
 nemo-desktop --quit && (nemo-desktop &)
 ```
 
+### Als Debian-Paket (.deb)
+
+Für eine feste Installation im System gibt es ein Debian-Paket. Gebaut wird es
+auf dem eigenen Rechner (Linux Mint 22.3 / Ubuntu 24.04):
+
+```bash
+sudo apt install debhelper dpkg-dev lintian desktop-file-utils   # einmalig
+pc/scripts/build-deb.sh
+```
+
+Das Skript führt die Tests aus, baut das Paket in einem Temp-Ordner, prüft
+Fassung, Abhängigkeiten, Pfade, den Starter und lässt `lintian` laufen. Das
+Ergebnis liegt in `pc/dist/speichenrechner_<Fassung>_all.deb`. Jeder Push baut
+es außerdem in der CI; dort liegt es unter *Actions → Tests → Artifacts*.
+
+Installieren, starten, entfernen:
+
+```bash
+sudo apt install ./pc/dist/speichenrechner_1.8.5_all.deb
+speichenrechner                # oder im Menü unter Zubehör
+speichenrechner --pruefen      # Selbsttest
+sudo apt remove speichenrechner
+```
+
+| Was | Wo |
+|---|---|
+| Programm, Module, Kataloge, Icon | `/opt/stevie-empire/speichenrechner/` |
+| Aufruf im Terminal | `/usr/bin/speichenrechner` (Verweis auf das Startskript) |
+| Menüeintrag | `/usr/share/applications/stevie-speichenrechner.desktop` |
+| Icon fürs Menü | `/usr/share/icons/hicolor/scalable/apps/de.speichenrechner.Speichenrechner.svg` |
+
+Eigene Vorlagen und Einstellungen in `~/.config/speichenrechner/` gehören nicht
+zum Paket und bleiben beim Entfernen erhalten. Wer vorher `pc/install.sh`
+benutzt hat, entfernt dessen Eintrag mit `pc/install.sh --entfernen` – sonst
+steht der Speichenrechner zweimal im Menü. Ein älteres, von Hand gebautes Paket
+unter `/usr/share/speichenrechner/` ersetzt `apt install` ohne Rückstände.
+
+`pc/scripts/test-install.sh` installiert das Paket probeweise, prüft Pfade,
+Starter und alle Prüfwerte, entfernt es und installiert es erneut. Es ändert das
+System und ist für eine Test-VM oder die CI gedacht.
+
 ## Bedienung
 
 1. **Nabe** – Flanschdurchmesser und Flanschabstand je Seite eintragen. Der
@@ -703,6 +744,11 @@ speichenrechner.py           reicht an pc/ durch – der gewohnte Aufruf
 pc/                          PC-Anwendung – alles, was nur sie betrifft
   speichenrechner.py         Startskript
   install.sh                 Menüeintrag und Icon anlegen
+  packaging/debian/          Debian-Paket: Installation unter /opt/stevie-empire/
+  scripts/
+    build-deb.sh             Paket bauen und prüfen
+    test-install.sh          Paket probeweise installieren und entfernen
+    installation_pruefen.py  installierte Anwendung gegen die Prüfwerte
   data/
     speichenrechner.svg      Anwendungs-Icon
     …desktop.in              Vorlage für den Menüeintrag
@@ -717,7 +763,7 @@ pc/                          PC-Anwendung – alles, was nur sie betrifft
     einstellungen.py         zuletzt benutzte Werte
     bericht.py               Ergebnis als Text
     formatierung.py          Zahlen in deutscher Schreibweise
-    pfade.py                 Ablageorte nach XDG-Standard
+    pfade.py                 alle Ablageorte: Daten, Icon, XDG-Ordner
     ui/                      GTK-Oberfläche
 app/                         Online- und Handy-Fassung – für sich lauffähig
   public/                    Web-App – ohne Bauschritt, ohne Fremdcode

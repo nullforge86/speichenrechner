@@ -1,0 +1,17 @@
+#!/bin/sh
+# Entfernt Bytecode, den Python beim Start als root unter /opt abgelegt haben
+# kann. dpkg kennt diese Dateien nicht und ließe sonst Ordner stehen.
+set -e
+
+case "$1" in
+    remove|upgrade|deconfigure)
+        if [ -d /opt/stevie-empire/speichenrechner ]; then
+            find /opt/stevie-empire/speichenrechner -type d -name __pycache__ \
+                -prune -exec rm -rf {} + || true
+        fi
+        ;;
+esac
+
+#DEBHELPER#
+
+exit 0
