@@ -1,6 +1,6 @@
 # Speichenrechner aufs Handy
 
-**➡️ [speichenrechner.apk herunterladen](https://github.com/kaysiebke-cell/speichenrechner/releases/latest/download/speichenrechner.apk)**
+**➡️ [speichenrechner.apk herunterladen](https://github.com/nullforge86/speichenrechner/releases/latest/download/speichenrechner.apk)**
 (3,3 MB) — das ist der bequemste Weg: antippen, installieren, fertig. Android
 fragt beim ersten Mal nach **„Aus dieser Quelle installieren"**, weil die APK mit
 dem Debug-Schlüssel signiert und nicht über den Play Store verteilt ist.
@@ -23,7 +23,7 @@ nötig:
 
 ## Ohne Installation: über das Netz
 
-**https://kaysiebke-cell.github.io/speichenrechner/**
+**https://nullforge86.github.io/speichenrechner/**
 
 Seite öffnen, dann im Menü des Browsers **„Zum Startbildschirm hinzufügen"**.
 Danach startet sie wie eine App – Vollbild, ohne Adresszeile – und rechnet
@@ -32,11 +32,11 @@ Gerät ablegt.
 
 ## 2. Als APK aus einem Actions-Lauf
 
-Die fertige APK hängt am [Release](https://github.com/kaysiebke-cell/speichenrechner/releases)
+Die fertige APK hängt am [Release](https://github.com/nullforge86/speichenrechner/releases)
 – das ist der einfache Weg. Wer die APK zu einem Stand braucht, der **nicht**
 auf `main` liegt (ein Branch, ein Pull Request), holt sie direkt aus dem Lauf:
 
-1. **[Actions](https://github.com/kaysiebke-cell/speichenrechner/actions/workflows/android.yml)**
+1. **[Actions](https://github.com/nullforge86/speichenrechner/actions/workflows/android.yml)**
    öffnen.
 2. Den obersten Lauf mit grünem Haken anklicken.
 3. Ganz unten unter **Artifacts** auf **`Speichenrechner-APK`** klicken – das
@@ -74,7 +74,7 @@ git push origin v1.5.0
 ```
 
 Danach liegt er als eigenes Release unter
-[Releases](https://github.com/kaysiebke-cell/speichenrechner/releases), mit
+[Releases](https://github.com/nullforge86/speichenrechner/releases), mit
 APK und Einzeldatei daran. Nötig für den Download-Link ist er nicht mehr; der
 zeigt beim nächsten Push auf `main` wieder auf „neueste".
 

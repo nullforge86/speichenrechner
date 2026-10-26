@@ -2,7 +2,7 @@
 
 ## ⬇️ Aufs Handy — die App herunterladen
 
-**➡️ [speichenrechner.apk herunterladen](https://github.com/kaysiebke-cell/speichenrechner/releases/latest/download/speichenrechner.apk)**
+**➡️ [speichenrechner.apk herunterladen](https://github.com/nullforge86/speichenrechner/releases/latest/download/speichenrechner.apk)**
 
 Der Link führt immer auf den Stand von `main`: jeder Push, der die App
 betrifft, baut die APK und hängt sie ans rollende Release „neueste". Ein Tag
@@ -67,7 +67,7 @@ python3 -m http.server 8765 --directory app/public --bind 0.0.0.0
 ```
 
 Dann `http://<PC-IP>:8765/` am Handy öffnen. Dieselben Dateien liegen unter
-<https://kaysiebke-cell.github.io/speichenrechner/> und stecken in der APK –
+<https://nullforge86.github.io/speichenrechner/> und stecken in der APK –
 `app/public/` ist die eine Quelle für alle drei.
 
 ![Speichenrechner am Handy, hell und dunkel](doku/bilder/screenshot-handy.png)
@@ -136,7 +136,7 @@ pgrep -af speichenrechner.py
 Für eine Fehlermeldung im Klartext hilft der Start aus dem Terminal:
 
 ```bash
-python3 /home/kaysiebke/Downloads/Speichenrechner/pc/speichenrechner.py
+python3 pc/speichenrechner.py
 ```
 
 ### Wo das Icon liegt
@@ -507,7 +507,7 @@ aber nur noch für Stände, die man wiederfinden will.
 
 Im Browser läuft sie über GitHub Pages:
 
-**https://kaysiebke-cell.github.io/speichenrechner/**
+**https://nullforge86.github.io/speichenrechner/**
 
 `.github/workflows/pages.yml` legt `app/public/` bei jedem Push auf `main` auf den
 Branch `gh-pages`, von dem Pages ausliefert. Auf dem Handy dann
